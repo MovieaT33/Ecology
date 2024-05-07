@@ -18,6 +18,8 @@
     </form>
 
     <script>
+        const sha3_512 = require('js-sha3').sha3_512;
+
         // Define your table of usernames and hashed passwords
         const userTable = {
             "alice": "5f4dcc3b5aa765d61d8327deb882cf99", // Example: "password"
@@ -33,7 +35,7 @@
             // Check if the username exists in the table
             if (userTable.hasOwnProperty(username)) {
                 // Compare the hashed password
-                if (md5(password) === userTable[username]) {
+                if (sha3_512(password) === userTable[username]) {
                     // Redirect to the specified URL
                     window.location.href = "https://www.canva.com/design/DAGEePnW5_4/d5y9ZQJ3siILnVzdXBCnVw/view?utm_content=DAGEePnW5_4&utm_campaign=designshare&utm_medium=link&utm_source=editor";
                 } else {
@@ -43,11 +45,6 @@
                 alert("User not found. Please check your username.");
             }
         });
-
-        // Simple MD5 hash function (for demonstration purposes only)
-        function md5(str) {
-            return str; // Replace with a proper hash function
-        }
     </script>
 </body>
 </html>
