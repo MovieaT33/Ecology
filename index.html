@@ -17,14 +17,10 @@
         <button type="submit">Login</button>
     </form>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha3/0.8.0/sha3.min.js"></script>
     <script>
-        const sha3_512 = require('js-sha3').sha3_512;
-
-        // Define your table of usernames and hashed passwords
         const userTable = {
-            "alice": "5f4dcc3b5aa765d61d8327deb882cf99", // Example: "password"
-            "bob": "202cb962ac59075b964b07152d234b70" // Example: "123"
-            // Add more users here
+            "Nicolas": "f78f79216f7627956a0fe1741e035b8d482334c9ca66dae77993eb9edf075f7b4bb76ed8764aa455c754e608cf4fa539612279791a84c6f046d41c67feab4ef1"
         };
 
         document.getElementById("loginForm").addEventListener("submit", function (event) {
@@ -32,11 +28,8 @@
             const username = document.getElementById("username").value;
             const password = document.getElementById("password").value;
 
-            // Check if the username exists in the table
             if (userTable.hasOwnProperty(username)) {
-                // Compare the hashed password
                 if (sha3_512(password) === userTable[username]) {
-                    // Redirect to the specified URL
                     window.location.href = "https://www.canva.com/design/DAGEePnW5_4/d5y9ZQJ3siILnVzdXBCnVw/view?utm_content=DAGEePnW5_4&utm_campaign=designshare&utm_medium=link&utm_source=editor";
                 } else {
                     alert("Incorrect password. Please try again.");
