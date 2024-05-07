@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+</head>
+<body>
+    <h1>Login Page</h1>
+    <form id="loginForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" required>
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" required>
+        <br>
+        <button type="submit">Login</button>
+    </form>
+
+    <script>
+        // Define your table of usernames and hashed passwords
+        const userTable = {
+            "alice": "5f4dcc3b5aa765d61d8327deb882cf99", // Example: "password"
+            "bob": "202cb962ac59075b964b07152d234b70" // Example: "123"
+            // Add more users here
+        };
+
+        document.getElementById("loginForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            // Check if the username exists in the table
+            if (userTable.hasOwnProperty(username)) {
+                // Compare the hashed password
+                if (md5(password) === userTable[username]) {
+                    // Redirect to the specified URL
+                    window.location.href = "https://www.canva.com/design/DAGEePnW5_4/d5y9ZQJ3siILnVzdXBCnVw/view?utm_content=DAGEePnW5_4&utm_campaign=designshare&utm_medium=link&utm_source=editor";
+                } else {
+                    alert("Incorrect password. Please try again.");
+                }
+            } else {
+                alert("User not found. Please check your username.");
+            }
+        });
+
+        // Simple MD5 hash function (for demonstration purposes only)
+        function md5(str) {
+            return str; // Replace with a proper hash function
+        }
+    </script>
+</body>
+</html>
